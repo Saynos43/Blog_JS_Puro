@@ -1,2 +1,3 @@
 const categorias = ["Home", "Primes", "Warframes", "Weapons"];
 console.log(categorias);
+console.log('cambiando algo...')
