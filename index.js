@@ -68,3 +68,27 @@ programadores.forEach((programador,index)=>{
 })
 
 
+const URL_API = 'rickandmortyapi.com/api';
+const divisasHtml = document.getElementById("divisas");
+let personajes;
+
+fetch(`https://${URL_API}/character`)
+.then( async (resp) => {
+    personajes = (await resp.json()).results
+
+    console.log(personajes)
+
+} )
+
+
+
+
+/*
+.then(resp => resp.json())
+.then((data) => {
+  alert(`10 GBP = ${data.rates.USD} USD`);
+});
+
+
+*/
+
