@@ -62,7 +62,16 @@ fetch(`https://${URL_API}/character`)
 .then( async (resp) => {
     personajes = (await resp.json()).results
 
+    personajes = personajes.map((personaje) => ({
+        id:personaje.id,
+        name:personaje.name,
+        image: personaje.image,
+        species: personaje.species
+    }))
+
     console.log(personajes)
+
+
     personajes.forEach((personaje,index)=>{
         const cardDiv = document.createElement("div");
         cardDiv.classList.add("card");
@@ -73,13 +82,19 @@ fetch(`https://${URL_API}/character`)
             <div class="card-body">
             <h5 class="card-title">${personaje.name}</h5>
             <p class="card-text">${personaje.species}</p>
-            <a href="#" class="btn btn-primary">VER DETALLES</a>
+            <a href="#" onclick="pasarDatos(${personaje.id})" class="btn btn-primary">VER DETALLES</a>
         ` 
     
         programadoresHtml.appendChild(cardDiv)
     })
+
+
 } )
 
+const pasarDatos = (id) => {
+    console.log(id)
+    window.open(`personaje.html?id=${id}`,'_self')
+}
 
 
 
