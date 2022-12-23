@@ -51,21 +51,7 @@ categorias.forEach((categoria,index) => {
     navHtml.appendChild(a);
 })
 
-programadores.forEach((programador,index)=>{
-    const cardDiv = document.createElement("div");
-    cardDiv.classList.add("card");
-    cardDiv.style.width = "18rem";
 
-    cardDiv.innerHTML = `
-        <img src="${programador.img}" class="card-img-top" alt="...">
-        <div class="card-body">
-        <h5 class="card-title">${programador.name}</h5>
-        <p class="card-text">${programador.rol}</p>
-        <a href="#" class="btn btn-primary">Contratar</a>
-    ` 
-
-    programadoresHtml.appendChild(cardDiv)
-})
 
 
 const URL_API = 'rickandmortyapi.com/api';
@@ -77,7 +63,21 @@ fetch(`https://${URL_API}/character`)
     personajes = (await resp.json()).results
 
     console.log(personajes)
-
+    personajes.forEach((personaje,index)=>{
+        const cardDiv = document.createElement("div");
+        cardDiv.classList.add("card");
+        cardDiv.style.width = "18rem";
+    
+        cardDiv.innerHTML = `
+            <img src="${personaje.image}" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">${personaje.name}</h5>
+            <p class="card-text">${personaje.species}</p>
+            <a href="#" class="btn btn-primary">VER DETALLES</a>
+        ` 
+    
+        programadoresHtml.appendChild(cardDiv)
+    })
 } )
 
 
